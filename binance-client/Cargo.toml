@@ -1,0 +1,61 @@
+# Generated with openapi_generator 0.1.1-alpha.0
+
+[package]
+name = "binance_spot_public_api"
+version = "1.0.0"
+edition = "2018"
+
+[lib]
+name = "binance_spot_public_api"
+path = "lib.rs"
+
+[[example]]
+name = "binance_spot_public_api_example"
+path = "examples/main.rs"
+
+[dependencies]
+actix-http = { version = "2.0.0", optional = true }
+actix-multipart = { version = "0.3.0", optional = true }
+actix-rt = { version = "1.1.1", optional = true }
+actix-service = { version = "1.0.6", optional = true }
+actix-web = { version = "3.0.2", optional = true }
+async-trait = { version = "0.1.24", optional = true }
+displaydoc = { version = "0.1.5", optional = true }
+mockiato = { version = "0.9.5", optional = true }
+serde = { version = "1.0.104", features = ["derive"] }
+serde_json = { version = "1.0.48" }
+thiserror = { version = "1.0.11", optional = true }
+url = { version = "2.1.1", optional = true }
+mockito = { version = "0.22.0", optional = true }
+log = {version = "0.4.8", optional = true}
+serde_urlencoded = { version = "0.6.1", optional = true }
+futures = { version = "0.3.2", optional = true }
+maplit = "1.0.2"
+once_cell = "1.4.0"
+
+[dependencies.reqwest]
+features = ["json"]
+version = "0.11.0"
+optional = true
+
+[dev-dependencies]
+femme = "1.3.0"
+
+[features]
+default = ["client"]
+server = [
+    "actix-web",
+    "actix-service",
+    "actix-http",
+    "async-trait",
+    "actix-multipart",
+    "futures"]
+client = [
+    "reqwest",
+    "url",
+    "mockiato",
+    "thiserror",
+    "displaydoc",
+    "serde_urlencoded",
+    "log"]
+mock-server = ["log", "mockito"]
